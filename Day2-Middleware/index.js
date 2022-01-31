@@ -4,9 +4,9 @@ const morgan = require('morgan');
 const app = express();
 
 //Using morgan function which will return a middleware
-app.use(morgan('dev')); //Global middleware
+//app.use(morgan('dev')); //Global middleware
 
-app.get("/",(req,res) => {
+app.get("/",morgan("dev"),(req,res) => {
     res.send("Hello World!");
 });
 
