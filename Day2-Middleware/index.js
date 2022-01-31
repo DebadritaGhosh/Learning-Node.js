@@ -9,15 +9,26 @@ const app = express();
 //Creating custon middleware
 function custonmMiddleware(req,res,next) {
     if(req.url === "/"){
-        res.send("<h1> This is home page!! </h1>")
+        console.log("first middleware!");
     }
     next();
 }
 
-//Using custom middleware
-app.use(custonmMiddleware);
+//Creating another custon middleware
+function tinyLogger(){
+    return (req,res,next) => {
+        console.log(`${req.method} - ${req.url}`);
+        next();
+    }
+}
 
-app.get("/",morgan("dev"),(req,res) => { //Using middleware for single route
+//Using miltiple middleware
+const middleware = [custonmMiddleware,tinyLogger()];
+
+//Using custom middleware
+app.use(middleware);
+
+app.get("/",(req,res) => { //Using middleware for single route
     res.send("Hello World!");
 });
 
