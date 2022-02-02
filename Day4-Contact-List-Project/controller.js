@@ -1,20 +1,16 @@
-data = [
-    {
-        id: 1,
-        name: 'Debadrita',
-        phone: 1234,
-        email: "debadrita.ghosh2010@gmail.com"
-    },
-    {
-        id: 2,
-        name: 'Paushali',
-        phone: 2345,
-        email: "paushali@gmail.com"
-    },
-    {
-        id: 3,
-        name: 'Sourav',
-        phone: 4321,
-        email: "sourav@gmail.com"
-    },
-]
+const Contacts = require("./Contacts");
+const contacts = require("./Contacts");
+
+exports.getAllContacts = (req, res) => {
+  res.json(contacts.getAllContacts());
+};
+
+exports.createContact = (req, res) => {
+  let { name, phone, email } = req.body;
+  let contact = contacts.createContact({
+    name,
+    phone,
+    email,
+  });
+  res.json(contact);
+};
