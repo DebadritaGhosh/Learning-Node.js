@@ -18,17 +18,3 @@ data = [
         email: "sourav@gmail.com"
     },
 ]
-
-
-
-exports.getAllContacts = (req,res) => {
-    res.json(data);
-}
-
-exports.addContacts = (req,res) => {
-    
-}
-
-exports.getSingleContact = (req,res) => {
-
-}
